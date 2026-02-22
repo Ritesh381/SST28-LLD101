@@ -19,9 +19,13 @@ A cafeteria billing console generates invoices for student orders. It currently 
 
 ## 4. Your task (refactor plan)
 Checkpoint A: Run and capture output.
+
 Checkpoint B: Separate pricing/tax/discount computations into dedicated components.
+
 Checkpoint C: Move invoice formatting out of `CafeteriaSystem`.
+
 Checkpoint D: Introduce small abstractions to decouple persistence and rules.
+
 Checkpoint E: Keep output identical.
 
 ## 5. Constraints
