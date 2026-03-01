@@ -11,4 +11,13 @@ public class DeviceRegistry {
         }
         throw new IllegalStateException("Missing: " + simpleName);
     }
+
+    public <T> T getFirstOfType(String simpleName, Class<T> capability) {
+        for (SmartClassroomDevice d : devices) {
+            if (d.getClass().getSimpleName().equals(simpleName) && capability.isInstance(d)) {
+                return capability.cast(d);
+            }
+        }
+        throw new IllegalStateException("Missing: " + simpleName + " with capability " + capability.getSimpleName());
+    }
 }
