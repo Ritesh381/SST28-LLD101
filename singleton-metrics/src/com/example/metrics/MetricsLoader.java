@@ -14,7 +14,6 @@ import java.util.Properties;
  *  - Use MetricsRegistry.getInstance() and remove all direct instantiation.
  */
 public class MetricsLoader {
-
     public MetricsRegistry loadFromFile(String path) throws IOException {
         Properties props = new Properties();
         try (FileInputStream fis = new FileInputStream(path)) {
@@ -22,7 +21,8 @@ public class MetricsLoader {
         }
 
         // BROKEN: should not create a new instance
-        MetricsRegistry registry = new MetricsRegistry();
+        // FIX : changed to call the function to getInstance.
+        MetricsRegistry registry = MetricsRegistry.getInstance();
 
         for (String key : props.stringPropertyNames()) {
             String raw = props.getProperty(key, "0").trim();
