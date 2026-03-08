@@ -7,6 +7,11 @@ public class EmailSender extends NotificationSender {
     }
 
     @Override
+    protected void ExtraValidation(Notification n){
+        
+    }
+
+    @Override
     protected String render(Notification n) {
         return "EMAIL -> to=" + n.email + " subject=" + n.subject + " body=" + n.body;
     }

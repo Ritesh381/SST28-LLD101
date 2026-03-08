@@ -11,29 +11,20 @@ public abstract class Exporter {
         if (payload == null) {
             throw new IllegalStateException("Encoded payload must not be null");
         }
+        validate(req);
 
         ExportResult result = new ExportResult(contentType(), payload.getBytes(StandardCharsets.UTF_8));
-        validateResult(result);
         return result;
     }
 
     protected abstract String contentType();
 
     protected abstract String encode(ExportRequest req);
+    
+    protected void validate(ExportRequest req) {}
 
     private String normalize(String text) {
         return text == null ? "" : text;
     }
 
-    private void validateResult(ExportResult result) {
-        if (result == null) {
-            throw new IllegalStateException("ExportResult must not be null");
-        }
-        if (result.contentType == null || result.contentType.isBlank()) {
-            throw new IllegalStateException("contentType must not be blank");
-        }
-        if (result.bytes == null) {
-            throw new IllegalStateException("bytes must not be null");
-        }
-    }
 }
